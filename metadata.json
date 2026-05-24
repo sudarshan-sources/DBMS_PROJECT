@@ -1,0 +1,6 @@
+{
+  "name": "Military Database Management System",
+  "description": "Command Ops Center dashboard for managing Indian Army soldiers, weapons, fleet vehicles, operations missions, and readiness training records with custom tactical metrics & status auditing.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

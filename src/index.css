@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap');
+@import "tailwindcss";
+
+@theme {
+  /* Tactical Font Assignments */
+  --font-tactical: "Rajdhani", sans-serif;
+  --font-code: "Share Tech Mono", monospace;
+
+  /* Custom Indian Army Color Codes */
+  --color-army-black: #1A1F0E;
+  --color-army-bunker: #232B14;
+  --color-army-olive: #2C3318;
+  --color-army-border: #3D4A22;
+  --color-army-muted: #8A9070;
+  --color-army-cream: #E8DFB8;
+  --color-army-gold: #C9A84C;
+  --color-army-saffron: #FF9933;
+  --color-army-green: #138808;
+  --color-army-row: #354020;
+
+  /* Custom Animation Animations Rules */
+  --animate-fade-up: fadeInUp 0.3s ease-out forwards;
+  --animate-slide-right: slideInRight 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-toast-in: toastIn 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  --animate-pulse-glow: pulseGlow 2s ease-in-out infinite;
+  --animate-shake: shake 0.5s ease-in-out;
+}
+
+/* Base Keyframe Implementations */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes toastIn {
+  0% {
+    opacity: 0;
+    transform: translateX(100%) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 4px rgba(19, 136, 8, 0.2);
+  }
+  50% {
+    opacity: 0.75;
+    box-shadow: 0 0 12px rgba(19, 136, 8, 0.45);
+  }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
+  20%, 40%, 60%, 80% { transform: translateX(4px); }
+}
+
+/* Scrollbar styling for Command Bunker look */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #232B14; /* Army Bunker */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #C9A84C; /* Gold brass */
+  border-radius: 4px;
+  border: 2px solid #232B14;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #E8DFB8; /* Cream */
+}
+
+/* Global focus state overrides to glow Gold */
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: #C9A84C !important;
+  box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.3) !important;
+}
+
+/* Shake preview custom element */
+.hover\:animate-shake:hover {
+  animation: shake 0.5s ease-in-out;
+}
+
+/* Clashing Swords Loading Animations */
+@keyframes swordClashLeft {
+  0% {
+    transform: rotate(-20deg);
+  }
+  20% {
+    transform: rotate(-35deg); /* Draw back slightly to the left */
+  }
+  28% {
+    transform: rotate(-37deg); /* Brief tension hold */
+  }
+  35% {
+    transform: rotate(18deg); /* Snappy clash in the center! */
+  }
+  41% {
+    transform: rotate(10deg); /* Sharp recoil */
+  }
+  48% {
+    transform: rotate(14deg); /* Secondary micro clash contact */
+  }
+  65% {
+    transform: rotate(-20deg); /* Recover gracefully to neutral crossed position */
+  }
+  100% {
+    transform: rotate(-20deg);
+  }
+}
+
+@keyframes swordClashRight {
+  0% {
+    transform: rotate(20deg);
+  }
+  20% {
+    transform: rotate(35deg); /* Draw back slightly to the right */
+  }
+  28% {
+    transform: rotate(37deg); /* Brief tension hold */
+  }
+  35% {
+    transform: rotate(-18deg); /* Snappy clash in the center! */
+  }
+  41% {
+    transform: rotate(-10deg); /* Sharp recoil */
+  }
+  48% {
+    transform: rotate(-14deg); /* Secondary micro clash contact */
+  }
+  65% {
+    transform: rotate(20deg); /* Recover gracefully to neutral crossed position */
+  }
+  100% {
+    transform: rotate(20deg);
+  }
+}
+
+@keyframes swordSparkGlow {
+  0%, 33% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+  }
+  35% {
+    transform: translate(-50%, -50%) scale(1.1);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(2.6);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(2.6);
+    opacity: 0;
+  }
+}
+
+.animate-sword-left {
+  animation: swordClashLeft 1.4s cubic-bezier(0.19, 1, 0.22, 1) infinite;
+}
+
+.animate-sword-right {
+  animation: swordClashRight 1.4s cubic-bezier(0.19, 1, 0.22, 1) infinite;
+}
+
+.animate-sword-spark {
+  animation: swordSparkGlow 1.4s cubic-bezier(0.19, 1, 0.22, 1) infinite;
+}
+
+/* Leaflet Tactical Popup Overrides */
+.leaflet-popup-content-wrapper {
+  background-color: #1A1F0E !important;
+  color: #E8DFB8 !important;
+  border: 1px solid #C9A84C !important;
+  border-radius: 8px !important;
+  padding: 0 !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.8), 0 8px 10px -6px rgba(0, 0, 0, 0.8) !important;
+}
+
+.leaflet-popup-content {
+  margin: 0 !important;
+  line-height: inherit !important;
+}
+
+.leaflet-popup-tip {
+  background-color: #1A1F0E !important;
+  border-left: 1px solid #C9A84C !important;
+  border-bottom: 1px solid #C9A84C !important;
+}
+
+.leaflet-container a.leaflet-popup-close-button {
+  color: #8A9070 !important;
+  padding: 6px 6px 0 0 !important;
+}
+
+.leaflet-container a.leaflet-popup-close-button:hover {
+  color: #C9A84C !important;
+}
+
+
